@@ -1,0 +1,10 @@
+{
+  "name": "h-orm",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/yuanhaoyu/h-orm.git",
+  "license": "MIT",
+  "dependencies": {
+    "mysql": "^2.17.1"
+  }
+}
