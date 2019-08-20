@@ -1,13 +1,25 @@
 const horm = require('../../index')
+const mysql = require('../../lib/mysql')
 
-horm.connect({
+const windows = {
     host            : '127.0.0.1',
     port            : '3306',
     user            : 'root',
     password        : 'root',
     database        : 'test',
     debug           : true
-})
+}
+
+const mac = {
+    host: '127.0.0.1',
+    port: '3306',
+    database: 'test',
+    user: '',
+    password: '',
+    debug: true
+}
+
+horm.connect(mac)
 
 const StudentModel = horm.model('student', {
     name: String,
@@ -15,8 +27,12 @@ const StudentModel = horm.model('student', {
 })
 
 async function main() {
- const res = await StudentModel.find(1)
- console.log(res)
+  console.log(await StudentModel())
+  console.log(await StudentModel().where({
+      sex: 0
+  }))
+  console.log(await StudentModel().limit(1))
+  mysql.close()
 }
 
 main()
