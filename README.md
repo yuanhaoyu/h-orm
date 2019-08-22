@@ -11,6 +11,7 @@ Here is an example how to use h-orm
 const horm = require('h-orm')
 
 horm.connect({
+    limit: 10,
     host: '127.0.0.1',
     port: '3306',
     database: 'test',
@@ -44,6 +45,7 @@ Create a mysql connect pool, you can set follow setting
 
 ```js
 {
+    limit           : 10 // default 10, pool max connect num 
     host            : '127.0.0.1',
     port            : '3306',
     user            : 'your username',
