@@ -19,7 +19,7 @@ const mac = {
     debug: true
 }
 
-horm.connect(mac)
+horm.connect(windows)
 
 const StudentModel = horm.model('student', {
     name: String,

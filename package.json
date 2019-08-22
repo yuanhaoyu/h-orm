@@ -1,9 +1,16 @@
 {
   "name": "h-orm",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.js",
   "repository": "https://github.com/yuanhaoyu/h-orm.git",
   "license": "MIT",
+  "keywords": [
+    "orm",
+    "mysql",
+    "database",
+    "promise",
+    "easy"
+  ],
   "dependencies": {
     "mysql": "^2.17.1"
   },
