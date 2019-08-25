@@ -145,16 +145,32 @@ Find info which include serachData
 
 ```
 
-#### limit(num)
+#### sort(data)
+Sort your data
+
+```js
+(async () => {
+    await hormInstance().sort({key: 'name': rule: 'ASC'})
+    await hormInstance().sort([{key: 'name': rule: 'ASC'}, {key: 'sex': rule: 'DESC'}])
+})()
+
+```
+
+#### limit(num, count)
 Return limit result
 
 ```js
 (async () => {
-  await hormInstance().limit(10)
+  await hormInstance().limit(10) // get 0-9
   await hormInstance().where({sex: 0}).limit(1)
+  await hormInstance().where({sex: 0}).limit(0, 5) // get 0-4
 })()
 
 ```
+
+
+
+
 
 ## License
 

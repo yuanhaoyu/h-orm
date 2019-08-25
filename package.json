@@ -1,6 +1,6 @@
 {
   "name": "h-orm",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "index.js",
   "repository": "https://github.com/yuanhaoyu/h-orm.git",
   "license": "MIT",
