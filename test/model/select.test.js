@@ -34,9 +34,15 @@ const StudentModel = horm.model('student', {
       { name: 'adad', sex: 1 }
     ]);
   });
-  test('use where {sex: 0}', async () => {
+  test('where {sex: 0}', async () => {
     expect(await StudentModel().where({sex: 0})).toEqual([
       { name: 'ww', sex: 0 }
+    ])
+  })
+  test('where {sex: 0} or {sex: 1}', async () => {
+    expect(await StudentModel().where({sex: 0, name: 'man'}, 'OR')).toEqual([
+      { name: 'man', sex: 1 },
+      { name: 'ww', sex: 0 },
     ])
   })
   test('all limit 1', async () => {
