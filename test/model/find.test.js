@@ -27,27 +27,11 @@ const StudentModel = horm.model('student', {
 });
 
 (async () => {
-  test('gel All student',async () => {
-    expect(await StudentModel()).toEqual([
-      { name: 'man', sex: 1 },
-      { name: 'ww', sex: 0 },
-      { name: 'adad', sex: 1 }
-    ]);
-  });
-  test('where {sex: 0}', async () => {
-    expect(await StudentModel().where({sex: 0})).toEqual([
-      { name: 'ww', sex: 0 }
-    ])
+  test('find id = 1', async () => {
+    expect(await StudentModel().find(1)).toEqual([{ name: 'man', sex: 1 }])
   })
-  test('where {sex: 0}', async () => {
-    expect(await StudentModel().where({sex: ['0', '1']})).toEqual([
-      { name: 'man', sex: 1 },
-      { name: 'ww', sex: 0 },
-      { name: 'adad', sex: 1 }
-    ])
-  })
-  test('where {sex: 0} or {sex: 1}', async () => {
-    expect(await StudentModel().where({sex: 0, name: 'man'}, 'OR')).toEqual([
+  test('find id = 1,2', async () => {
+    expect(await StudentModel().find([1,2])).toEqual([
       { name: 'man', sex: 1 },
       { name: 'ww', sex: 0 },
     ])
