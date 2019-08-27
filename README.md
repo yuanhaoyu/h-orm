@@ -141,6 +141,7 @@ Find info which include serachData
 ```js
 (async () => {
   await hormInstance().where({sex: 0})
+  await hormInstance().where({sex: [0, 1]})
   await hormInstance().where({sex: 0, name: '%n'}, 'OR')
 })()
 
