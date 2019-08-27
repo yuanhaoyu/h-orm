@@ -27,27 +27,30 @@ const StudentModel = horm.model('student', {
 });
 
 (async () => {
-  test('gel All student',async () => {
-    expect(await StudentModel()).toEqual([
+  test('sort by name asc', async () => {
+    expect(await StudentModel().sort({key: 'name', rule: 'ASC'})).toEqual([
+      { name: 'adad', sex: 1 },
       { name: 'man', sex: 1 },
       { name: 'ww', sex: 0 },
-      { name: 'adad', sex: 1 }
-    ]);
-  });
-  test('where {sex: 0}', async () => {
-    expect(await StudentModel().where({sex: 0})).toEqual([
-      { name: 'ww', sex: 0 }
     ])
   })
-  test('where {sex: 0}', async () => {
-    expect(await StudentModel().where({sex: ['0', '1']})).toEqual([
+  test('sort by name desc', async () => {
+    expect(await StudentModel().sort({key: 'name', rule: 'DESC'})).toEqual([
+      { name: 'ww', sex: 0 },
+      { name: 'man', sex: 1 },
+      { name: 'adad', sex: 1 },
+    ])
+  })
+  test('sort by name and sex asc', async () => {
+    expect(await StudentModel().sort([{key: 'name', rule: 'ASC'}, {key: 'sex', rule: 'ASC'}])).toEqual([
+      { name: 'adad', sex: 1 },
       { name: 'man', sex: 1 },
       { name: 'ww', sex: 0 },
-      { name: 'adad', sex: 1 }
     ])
   })
-  test('where {sex: 0} or {sex: 1}', async () => {
-    expect(await StudentModel().where({sex: 0, name: 'man'}, 'OR')).toEqual([
+  test('sort by name and sex asc', async () => {
+    expect(await StudentModel().sort([{key: 'name', rule: 'ASC'}, {key: 'sex', rule: 'DESC'}])).toEqual([
+      { name: 'adad', sex: 1 },
       { name: 'man', sex: 1 },
       { name: 'ww', sex: 0 },
     ])
