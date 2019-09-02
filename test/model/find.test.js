@@ -26,17 +26,16 @@ const StudentModel = horm.model('student', {
     sex: Number,
 });
 
-(async () => {
-  test('find id = 1', async () => {
-    expect(await StudentModel().find(1)).toEqual([{ name: 'man', sex: 1 }])
-  })
-  test('find id = 1,2', async () => {
-    expect(await StudentModel().find([1,2])).toEqual([
-      { name: 'man', sex: 1 },
-      { name: 'ww', sex: 0 },
-    ])
-  })
-  test('close mysql here', () => {
-    mysql.close()
-  })
-})()
+
+test('find id = 1', async () => {
+  expect(await StudentModel().find(1)).toEqual([{ name: 'man', sex: 1 }])
+})
+test('find id = 1,2', async () => {
+  expect(await StudentModel().find([1,2])).toEqual([
+    { name: 'man', sex: 1 },
+    { name: 'ww', sex: 0 },
+  ])
+})
+test('close mysql here', () => {
+  mysql.close()
+})
