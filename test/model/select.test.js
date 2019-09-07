@@ -61,6 +61,19 @@ test('where {sex: 0} and name not like ad', async () => {
   ])
 })
 
+test('where name like %ma%', async () => {
+  expect(await StudentModel().where({ name_like: '%ma%' })).toEqual([
+    { name: 'man', sex: 1 },
+  ])
+})
+
+test('where name like %ma%', async () => {
+  expect(await StudentModel().where({ name_not_like: '%ma%' })).toEqual([
+    { name: 'ww', sex: 0 },
+    { name: 'adad', sex: 1 }
+  ])
+})
+
 test('where {sex: 0} or {sex: 1}', async () => {
   expect(await StudentModel().where({ sex: 0, name: 'man' }, 'OR')).toEqual([
     { name: 'man', sex: 1 },

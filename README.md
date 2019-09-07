@@ -136,13 +136,15 @@ Find prikey = 1 or prikey in (1,2,3)
 ```
 
 #### where(serachData, mode)
-Find info which include serachData
+Find info which include serachData (suport like)
 
 ```js
 (async () => {
   await hormInstance().where({sex: 0})
   await hormInstance().where({sex: [0, 1]})
   await hormInstance().where({sex: 0, name: '%n'}, 'OR')
+  await hormInstance().where({name_like: '%ma%'}) // SQL LIKE
+  await hormInstance().where({name_not_like: '%ma%'}) // SQL NOT LIKE
 })()
 
 ```
