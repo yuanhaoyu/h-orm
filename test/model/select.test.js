@@ -1,25 +1,8 @@
 const horm = require('../../index')
 const mysql = require('../../lib/mysql')
+const dbConfig = require('../config/db')
 
-const windows = {
-  host: '127.0.0.1',
-  port: '3306',
-  user: 'root',
-  password: 'root',
-  database: 'test',
-  debug: true
-}
-
-const mac = {
-  host: '127.0.0.1',
-  port: '3306',
-  database: 'test',
-  user: '',
-  password: '',
-  debug: true
-}
-
-horm.connect(windows)
+horm.connect(dbConfig)
 
 const StudentModel = horm.model('student', {
   name: String,
@@ -34,6 +17,22 @@ test('gel All student', async () => {
     { name: 'adad', sex: 1 }
   ]);
 });
+
+test('where null', async () => {
+  expect(await StudentModel().where()).toEqual([
+    { name: 'man', sex: 1 },
+    { name: 'ww', sex: 0 },
+    { name: 'adad', sex: 1 }
+  ])
+})
+
+test('where {}', async () => {
+  expect(await StudentModel().where({})).toEqual([
+    { name: 'man', sex: 1 },
+    { name: 'ww', sex: 0 },
+    { name: 'adad', sex: 1 }
+  ])
+})
 
 test('where {sex: 0}', async () => {
   expect(await StudentModel().where({ sex: 0 })).toEqual([

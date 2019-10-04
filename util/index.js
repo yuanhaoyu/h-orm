@@ -1,1 +1,0 @@
-module.exports.toArray = arr => Array.isArray(arr) ? arr : [arr]
